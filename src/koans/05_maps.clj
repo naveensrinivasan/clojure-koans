@@ -1,24 +1,25 @@
-(meditations
+
   "Don't get lost when creating a map"
-  (= {:a 1 :b 2} (hash-map :a 1 __ __))
+  (= {:a 1 :b 2} (hash-map :a 1 :b 2))
 
   "A value must be supplied for each key"
-  (= {:a 1} (hash-map :a __))
+  (= {:a 1} (hash-map :a 1))
+
 
   "The size is the number of entries"
-  (= __ (count {:a 1 :b 2}))
+  (= 2 (count {:a 1 :b 2}))
 
   "You can look up the value for a given key"
-  (= __ (get {:a 1 :b 2} :b))
+  (= 2 (get {:a 1 :b 2} :b))
 
   "Maps can be used as functions to do lookups"
-  (= __ ({:a 1 :b 2} :a))
+  (= 1 ({:a 1 :b 2} :a))
 
   "And so can keywords"
-  (= __ (:a {:a 1 :b 2}))
+  (= 1 (:a {:a 1 :b 2}))
 
   "But map keys need not be keywords"
-  (= __ ({2006 "Torino" 2010 "Vancouver" 2014 "Sochi"} 2010))
+  (= "Vancouver" ({2006 "Torino" 2010 "Vancouver" 2014 "Sochi"} 2010))
 
   "You may not be able to find an entry for a key"
   (= __ (get {:a 1 :b 2} :c))
@@ -44,4 +45,4 @@
 
   "You can get the values in a similar way"
   (= (list __ __ __)
-     (sort (vals {2006 "Torino" 2010 "Vancouver" 2014 "Sochi"}))))
+     (sort (vals {2006 "Torino" 2010 "Vancouver" 2014 "Sochi"})))
