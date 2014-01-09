@@ -1,4 +1,3 @@
-
   "Don't get lost when creating a map"
   (= {:a 1 :b 2} (hash-map :a 1 :b 2))
 
@@ -22,27 +21,27 @@
   (= "Vancouver" ({2006 "Torino" 2010 "Vancouver" 2014 "Sochi"} 2010))
 
   "You may not be able to find an entry for a key"
-  (= __ (get {:a 1 :b 2} :c))
+  (= nil (get {:a 1 :b 2} :c))
 
   "But you can provide your own default"
-  (= __ (get {:a 1 :b 2} :c :key-not-found))
+  (= :key-not-found (get {:a 1 :b 2} :c :key-not-found))
 
   "You can find out if a key is present"
-  (= __ (contains? {:a nil :b nil} :b))
+  (= true (contains? {:a nil :b nil} :b))
 
   "Or if it is missing"
-  (= __ (contains? {:a nil :b nil} :c))
+  (= false (contains? {:a nil :b nil} :c))
 
   "Maps are immutable, but you can create a new and improved version"
-  (= {1 "January" 2 __} (assoc {1 "January" } 2 "February"))
+  (= {1 "January" 2 "February"} (assoc {1 "January" } 2 "February"))
 
   "You can also create a new version with an entry removed"
-  (= {__ __} (dissoc {1 "January" 2 "February"} 2))
+  (= {1 "January"}  (dissoc {1 "January" 2 "February"} 2))
 
   "Often you will need to get the keys, but the order is undependable"
-  (= (list __ __ __)
+  (= (list 2006 2010 2014)
      (sort (keys {2010 "Vancouver" 2014 "Sochi" 2006 "Torino"})))
 
   "You can get the values in a similar way"
-  (= (list __ __ __)
+  (= (list "Sochi" "Torino" "Vancouver"  )
      (sort (vals {2006 "Torino" 2010 "Vancouver" 2014 "Sochi"})))
